@@ -11,11 +11,22 @@ import kotlinx.android.synthetic.main.activity_info.*
  * @author kuan
  * Created on 2018/3/16.
  */
-class InfoActivity : BaseMvpPresenterImpl<InfoContract.View,
-        InfoContract.Presenter>(),
+class InforepositoryActivity : BaseMvpActivity<InfoContract.View,
+        InfoPresenter>(),
         InfoContract.View {
+
+    override fun getInfo(): String {
+        return et_info.text.toString()
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+
     override fun getContext(): Context {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return
     }
 
     override fun showError(error: String?) {
@@ -34,13 +45,4 @@ class InfoActivity : BaseMvpPresenterImpl<InfoContract.View,
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getInfo(): String {
-        return et_info.text.toString()
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
 }
